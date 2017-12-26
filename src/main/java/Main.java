@@ -1,5 +1,6 @@
 
 
+import org.apache.spark.sql.DataFrame;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import services.CreatetingFrame;
 
@@ -12,7 +13,8 @@ public class Main {
         System.setProperty("spring.profiles.active", DEV);
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
         CreatetingFrame gm = context.getBean(CreatetingFrame.class);
-        gm.createDF("data/rawData.txt");
+        DataFrame dataFrame = gm.createDF("data/rawData.txt");
+        dataFrame.show();
         }
 
     }

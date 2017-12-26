@@ -1,24 +1,19 @@
 package services;
 
-import aop.ShowDataFrameAtTheBeginning;
+import aop.ShowRDDAtTheBeginning;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.broadcast.Broadcast;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.RowFactory;
-import org.apache.spark.sql.SQLContext;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import services.bpp.AutowiredBroadcast;
-import services.validation.Validation;
 
 
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 
 @Service
@@ -32,7 +27,7 @@ public class GameProcessingImpl implements GameProcessing, Serializable {
 
 
     @Override
-    @ShowDataFrameAtTheBeginning
+    @ShowRDDAtTheBeginning
     public JavaRDD<Row> getGameProcessed(JavaRDD<String> rdd) {
 
         JavaRDD<Row> moments = rdd.map((String line) ->{

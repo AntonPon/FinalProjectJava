@@ -6,10 +6,7 @@ import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.SQLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 
 import java.lang.reflect.Array;
@@ -24,6 +21,7 @@ import java.util.*;
 @PropertySource("classpath:football_columns.properties")
 @PropertySource("classpath:teams.properties")
 @PropertySource("classpath:countries.properties")
+@EnableAspectJAutoProxy
 public class Config {
 
     @Autowired
